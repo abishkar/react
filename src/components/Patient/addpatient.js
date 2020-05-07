@@ -3,7 +3,7 @@ class PatientTable extends Component {
     render() {
       const { patients } = this.props
         return (
-          <div className="App">
+          <div className="small-container">
 			<div id="patient-table">
       <table>
         <TableHeader />
@@ -21,8 +21,8 @@ class PatientTable extends Component {
       return (
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Patient Name</th>
+            <th>Patient Email</th>
           </tr>
         </thead>
       )
@@ -33,7 +33,7 @@ class PatientTable extends Component {
       return (
         <tr key={index}>
           <td>{row.name}</td>
-          <td>{row.job}</td>
+          <td>{row.email}</td>
         </tr>
       )
     })

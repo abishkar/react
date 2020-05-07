@@ -3,37 +3,38 @@ import './App.css';
 import PatientTable from './components/Patient/addpatient';
 
 class App extends Component {
+  state = {
+    patients: [],
+  }
+
+
   render() {
 
-    const patients = [
-      {
-        name: 'Charlie',
-        job: 'Janitor',
-      },
-      {
-        name: 'Mac',
-        job: 'Bouncer',
-      },
-      {
-        name: 'Dee',
-        job: 'Aspring actress',
-      },
-      {
-        name: 'Dennis',
-        job: 'Bartender',
-      },
-    ]
-
-
-
-
   return (
-    <div className="App">
-      <h1>Patient</h1>
-      <PatientTable patients= {patients} />
+    <div className="small-container ">
+      <h1>Patients</h1>
+      <PatientTable patients= {this.state.patients} />
     </div>
   );
 }
+
+
+componentDidMount() {
+  const url =
+    'https://jsonplaceholder.typicode.com/users'
+
+  fetch(url)
+    .then(result => result.json())
+    .then(result => {
+      this.setState({
+        patients: result,
+      })
+    })
+}
+
+
+
+
 }
 
 export default App;
